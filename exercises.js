@@ -41,7 +41,6 @@ function maxOfThree(number1, number2, number3){
     //console.log(maxNum);
     return maxNum;
     //...
-
 }
 
 console.assert(maxOfThree(10, 20, 30) == 30);
@@ -76,28 +75,27 @@ console.assert(isVowel('a') == true);
 
 function rovarspraket(phrase){
     "use strict";
-    var newValue;
-    var splitString = phrase.split("");
-    var newString = [];
+    var newValue = '';
+    //var newString = [];
 
-    for(var i = 0; i<splitString.length; i++){
-      if(isVowel(splitString[i]) || splitString[i] == ' ') {
-        newValue = splitString[i];
+    for(var i = 0; i<phrase.length; i++){
+      var char = phrase[i];
+
+      if(isVowel(char) || char == ' ') {
+        newValue += char;
       } else{
-        newValue = (splitString[i] + 'o' + splitString[i]);
+        newValue += char + 'o' + char;
         }
-        //console.log(newValue);
-        newString = [newString + newValue[i]].join('');
 
       }
-      //console.log(newString);
-      return newString;
+
+      //console.log(newValue);
+      return newValue;
 
   }
 
-rovarspraket('two words');
 
-//console.assert(rovarspraket('two words') == 'totwowo woworordodsos');
+console.assert(rovarspraket('two words') == 'totwowo woworordodsos');
 
 // ---------------------
 // Define a function sum() and a function multiply() that sums and multiplies
@@ -108,7 +106,6 @@ rovarspraket('two words');
 function sum(numbersToAdd){
     "use strict";
 
-    var numbersToAdd = [1, 2, 3, 4];
     var sum = 0;
 
     for(var i = 0; i<numbersToAdd.length; i++){
@@ -119,23 +116,23 @@ function sum(numbersToAdd){
     //...
 }
 
-console.assert(sum(1, 2, 3, 4) == 10);
+console.assert(sum([1, 2, 3, 4]) == 10);
 
 function multiply(numbersToMult){
     "use strict";
 
-    var numbersToMult = [1, 2, 3, 4];
-    var quotient = 1;
+
+    var product = 1;
 
     for(var i = 0; i<numbersToMult.length; i++){
-      quotient = quotient * numbersToMult[i];
+      product = product * numbersToMult[i];
     }
 
-    return quotient;
+    return product;
     //...
 }
 
-console.assert(multiply(1, 2, 3, 4) == 24);
+console.assert(multiply([1, 2, 3, 4]) == 24);
 
 // ---------------------
 // Define a function reverse() that computes the reversal of a string. For example,
@@ -188,13 +185,12 @@ console.assert(findLongestWord('hello goodbye you us') == 7);
 // i and returns the array of words that are longer than i.
 // ---------------------
 
-function filterLongWords(words, i){
+function filterLongWords(words, size){
     "use strict";
-    var wordArray = words.split(" ");
     var newArray = [];
-    for(var p = 0; p < wordArray.length; p++){
-      if(wordArray[p].length>i){
-        newArray[newArray.length] = wordArray[p];
+    for(var i = 0; i < words.length; i++){
+      if(words[i].length>size){
+        newArray[newArray.length] = words[i];
 
 
       }
@@ -204,7 +200,7 @@ function filterLongWords(words, i){
     //...
 }
 
-//console.assert(filterLongWords('How many times am I typing words', 4) == ['times', 'typing', 'words']);
+filterLongWords(['How', 'many', 'times', 'am', 'I', 'typing', 'words'], 4);
 
 // ---------------------
 // Write a function charFreq() that takes a string and builds a frequency listing
@@ -212,9 +208,8 @@ function filterLongWords(words, i){
 // Javascript object. Try it with something like charFreq("abbabcbdbabdbdbabababcbcbab").
 // ---------------------
 
-function charFreq(string){
-    "use strict";
-
+ function charFreq(string){
+     "use strict";
     var letters = string.split('');
     var letterA = 0;
     var letterB = 0;
@@ -223,20 +218,23 @@ function charFreq(string){
 
     for(var i = 0; i < letters.length; i++){
       if(letters[i] == 'a') {
-        letterA = letterA + 1;
+        letterA += 1;
       } else if(letters[i] == 'b') {
-        letterB = letterB + 1;
+        letterB += 1;
       } else if(letters[i] == 'c'){
-        letterC = letterC + 1;
+        letterC += 1;
       } else {
-        letterD = letterD + 1;
+        letterD += 1;
       }
+
     }
-      console.log(letterA, letterB, letterC, letterD);
+
+    console.log(letterA, letterB, letterC, letterD);
 
 
-
-    //return letterA, letterB, letterC, letterD;
+    return letterA, letterB, letterC, letterD;
     //...
+
+
 }
-charFreq('abbabcbdbabdbdbabababcbcbabdabcd');
+charFreq('abbabcbdbabdbdbabababcbcbab');
